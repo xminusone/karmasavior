@@ -6,31 +6,30 @@ import sys
 import sqlite3
 
 '''USER CONFIGURATION'''
-APP_ID = ""
-APP_SECRET = ""
-APP_URI = ""
-APP_REFRESH = ""
-# https://www.reddit.com/comments/3cm1p8/how_to_make_your_bot_use_oauth2/
-USERAGENT = ""
+username = "NotTheOnionBot"
+password = "Nice Try"
+r.login(username, password, disable_warning=True)
+
+USERAGENT = "Mod Comment Poster v0.1 - /u/x_minus_one"
 #This is a short description of what the bot does. For example "/u/GoldenSights' Newsletter bot"
-SUBRESTRICT = ["GoldTesting", "test"]
+SUBRESTRICT = ["xmo_test"]
 #This is the subreddit where the bot is allowed to post.
 #If a user inputs a permalink that does not lead to this subreddit, the post will fail.
 #To allow any, delete everything between the brackets.
-COMHEADER = "This is at the top of the comment\n\n"
+COMHEADER = ""
 #Comment Header. If you place _username_ anywhere in this line, it will be replaced by the name of the person who requested the comment.
-COMFOOTER = "\n\nThis is at the bottom of the comment"
+COMFOOTER = "\n\n*This comment was posted at the request of a moderator of this subreddit.*"
 #Comment Footer. If you place _username_ anywhere in this line, it will be replaced by the name of the person who requested the comment.
-PMHEADER = "This is at the top of the return PM\n\n"
+PMHEADER = "Success!\n\n"
 #PM Header
-PMFOOTER = "\n\nThis is at the bottom of the return PM"
+PMFOOTER = "\n\nFooter goes here."
 #PM Footer
 PMSUCCESS = "Your comment has successfully been created: [Here](_permalink_)"
 #This will be sent to the user when his post succeeds
 #_permalink_ will be replaced by the successful comment's permalink. You may move this around as you please.
 PMFAILURE = "Your comment has been rejected for the following reason(s):\n\n"
 #This will be sent to the user when his post fails. Error messages will be displayed
-PMTITLE = "Anonymisc"
+PMTITLE = "Comment Poster Reply"
 #This is the title of the message that will be returned to the user
 
 ERRBANNED = "- You have been banned from using this service"
@@ -48,7 +47,7 @@ ERRWHITELIST = "- The bot is currently running in whitelist mode. You have not b
 ERRTWICE = "- That comment has already been replied to through this service. The bot does not allow multiple replies at this time"
 #If ALLOWTWICE is False and a second user tries to make a reply, return this error
 
-WHITEMODE = False
+WHITEMODE = True
 #If set to True, the bot will only allow users who are registered in the whitelist.
 #Members can be added to the whitelist by an admin or by entering a proper password
 #Use True or False (With Capitals! No quotation marks!)
@@ -80,12 +79,12 @@ ALLOWTWICE = True
 #If this is False, only one person will be able to create a reply to a permalink
 #Use True or False (With Capitals! No quotation marks!)
 
-DISTINGUISHCOMMENT = False
+DISTINGUISHCOMMENT = True
 #If your bot is going to be operating in a sub where it is a moderator, you may choose to distinguish the comment
 #Use True or False (With Capitals! No quotation marks!)
 WAIT = 15
 #This is how many seconds you will wait between cycles. The bot is completely inactive during this time.
-ADMIN = ["GoldenSights"]
+ADMIN = ["x_minus_one"]
 #This is the owner(s) of the bot. Only ADMINS can manage user bans.
 '''All done!'''
 
