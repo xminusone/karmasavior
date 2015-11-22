@@ -8,9 +8,11 @@ import sqlite3
 '''USER CONFIGURATION'''
 username = "NotTheOnionBot"
 password = "Nice Try"
+
+# Login
+r = praw.Reddit(user_agent="Mod Comment Poster by /u/x_minus_one v0.1")
 r.login(username, password, disable_warning=True)
 
-USERAGENT = "Mod Comment Poster v0.1 - /u/x_minus_one"
 #This is a short description of what the bot does. For example "/u/GoldenSights' Newsletter bot"
 SUBRESTRICT = ["xmo_test"]
 #This is the subreddit where the bot is allowed to post.
@@ -94,7 +96,6 @@ ADMIN = ["x_minus_one"]
 
 try:
     import bot 
-    USERAGENT = bot.getaT()
 except ImportError:
     pass
 
@@ -113,11 +114,6 @@ cur.execute('CREATE TABLE IF NOT EXISTS white(name TEXT)')
 print('Loaded whitelist')
 
 sql.commit()
-
-
-r = praw.Reddit(USERAGENT)
-r.set_oauth_app_info(APP_ID, APP_SECRET, APP_URI)
-r.refresh_access_information(APP_REFRESH)
 
 def scanPM():
     banlist = []
