@@ -7,10 +7,10 @@ import sqlite3
 
 '''USER CONFIGURATION'''
 username = "NotTheOnionBot"
-password = "Nice Try"
+password = "Nice Try, Dodongo!"
 
 # Login
-r = praw.Reddit(user_agent="Mod Comment Poster by /u/x_minus_one v0.1")
+r = praw.Reddit(user_agent="Mod Comment Poster run by /u/x_minus_one - v0.1")
 r.login(username, password, disable_warning=True)
 
 #This is a short description of what the bot does. For example "/u/GoldenSights' Newsletter bot"
@@ -22,9 +22,9 @@ COMHEADER = ""
 #Comment Header. If you place _username_ anywhere in this line, it will be replaced by the name of the person who requested the comment.
 COMFOOTER = "\n\n*This comment was posted at the request of a moderator of this subreddit.*"
 #Comment Footer. If you place _username_ anywhere in this line, it will be replaced by the name of the person who requested the comment.
-PMHEADER = "Success!\n\n"
+PMHEADER = "Your PM command has been processed.\n\n"
 #PM Header
-PMFOOTER = "\n\nFooter goes here."
+PMFOOTER = "\n\n-/u/NotTheOnionBot."
 #PM Footer
 PMSUCCESS = "Your comment has successfully been created: [Here](_permalink_)"
 #This will be sent to the user when his post succeeds
@@ -59,11 +59,11 @@ UNBANCOMMAND = "unbanuser"
 BANLISTCOMMAND = "banlist?"
 #The ADMIN may use these commands to ban / unban a username
 #BANLISTCOMMAND will return a PM with the names of all banned and whitelisted users.
-WHITECOMMAND = "whitelist"
-UNWHITECOMMAND = "unwhitelist"
+WHITECOMMAND = "addmod"
+UNWHITECOMMAND = "removemod"
 #The ADMIN may use these commands to add / remove from the whitelist
 
-BANPM = True
+BANPM = False
 WHITEPM = True
 #Do you want to PM the user when the ADMIN bans or whitelists him?
 #Use True or False (With Capitals! No quotation marks!)
