@@ -252,7 +252,7 @@ def scanPM():
                 pass
             elif len(failresult) == 0:
                 print('\t[   ] Creating comment')
-                reply = cobj.reply(COMHEADER.replace('_username_', author) + '\n\n[' + ltext + '](' + lurl + ')\n\n' + COMFOOTER.replace('_username_', author))
+                reply = cobj.reply(COMHEADER.replace('_username_', author) + '\n\n' + ltext + '\n\n' + COMFOOTER.replace('_username_', author))
                 if ALLOWTWICE == False:
                     cur.execute('INSERT INTO oldposts VALUES(?)', [cobj.id])
                 if DISTINGUISHCOMMENT == True:
