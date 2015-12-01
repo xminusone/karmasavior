@@ -73,7 +73,7 @@ WHITEPASS = "addmetothelist"
 
 FIELDPERM = ["Permalink:", "Comment Permalink:", "Comment Link:", "Perma:"]
 FIELDTEXT = ["Link Text:", "Hyperlink Text:", "Text:"]
-FIELDURL = ["Link URL:", "Hyperlink URL:", "URL:"]
+#FIELDURL = ["Link URL:", "Hyperlink URL:", "URL:"]
 #These are the three fields the user needs to fill.
 
 ALLOWTWICE = True
@@ -134,7 +134,6 @@ def scanPM():
         failoverride = False
         cobj = None
         ltext = ''
-        lurl = ''
         final = None
         print(pm.id + ', ', end='')
         try:
@@ -214,16 +213,6 @@ def scanPM():
                                                 ltext = ltext.replace('[', '')
                                                 ltext = ltext.replace(']', '')
                                                 print('\t[   ] Found Link Text')
-                                            if any(field.lower() in bodysplit[bindex+2] for field in FIELDURL):
-                                                lurl = bodysplit[bindex+2]
-                                                for field in FIELDURL:
-                                                    lurl = lurl.replace(field.lower(), '')
-                                                lurl = lurl.replace('(', '')
-                                                lurl = lurl.replace(')', '')
-                                                lurl.replace(' ','')
-                                                if lurl[:4] == 'www.':
-                                                    lurl = 'http://' + lurl
-                                                print('\t[   ] Found Link URL')
                                         except:
                                             print('\t[ERR] Formatting issue')
                                             failresult.append(ERRFORMATTING)
@@ -231,7 +220,7 @@ def scanPM():
                                         print('\t[ERR] Bad subreddit')
                                         failresult.append(ERRSUBREST)
 
-                                    elif ltext == '' or lurl == '':
+                                    elif ltext == '':
                                         print('\t[ERR] Formatting issue')
                                         failresult.append(ERRFORMATTING)
                                 except:
