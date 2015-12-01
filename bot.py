@@ -63,7 +63,7 @@ WHITECOMMAND = "addmod"
 UNWHITECOMMAND = "removemod"
 #The ADMIN may use these commands to add / remove from the whitelist
 
-BANPM = False
+BANPM = True
 WHITEPM = True
 #Do you want to PM the user when the ADMIN bans or whitelists him?
 #Use True or False (With Capitals! No quotation marks!)
@@ -71,8 +71,8 @@ WHITEPM = True
 WHITEPASS = "addmetothelist"
 #If the user's PM contains this string anywhere in the body, he will be added to the whitelist.
 
-FIELDPERM = ["Permalink:", "Comment Permalink:", "Comment Link:", "Perma:"]
-FIELDTEXT = ["Link Text:", "Hyperlink Text:", "Text:"]
+FIELDPERM = ["Link:", "Submission:", "Permalink:", "Comment Permalink:", "Comment Link:", "Perma:"]
+FIELDTEXT = ["Mod:", "Link Text:", "Hyperlink Text:", "Text:"]
 #FIELDURL = ["Link URL:", "Hyperlink URL:", "URL:"]
 #These are the three fields the user needs to fill.
 
@@ -139,7 +139,7 @@ def scanPM():
         try:
             author = pm.author.name.lower()
             print(author)
-            bodysplit = pm.body.lower().split('\n\n')
+            bodysplit = pm.body().split('\n\n')
             line = bodysplit[0]
             if any(author == admin.lower() for admin in ADMIN):
                 if UNBANCOMMAND.lower() in line:
@@ -196,7 +196,7 @@ def scanPM():
                                             link = link[-8:-1]
                                         print('\t[   ] ' + link)
                                 try:
-                                    cobj = r.get_info(thing_id='t1_' + link)
+                                    cobj = r.get_info(thing_id='t3_' + link)
                                     if ALLOWTWICE == False and not any(author == admin.lower() for admin in ADMIN):
                                         cur.execute('SELECT * FROM oldposts WHERE id=?', [cobj.id])
                                         if cur.fetchone():
